@@ -1,0 +1,136 @@
+<!
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Detalhe do Ninja</title>
+    <style>
+        body {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            background: #f4f7fb;
+            margin: 0;
+            padding: 20px;
+            color: #2c3e50;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 28px;
+            color: #2c3e50;
+        }
+
+        /* Card central do ninja */
+        div {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        div img {
+            border-radius: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        div h2 {
+            margin: 10px 0;
+            font-size: 24px;
+            color: #34495e;
+        }
+
+        div p {
+            font-size: 16px;
+            margin: 8px 0;
+            color: #555;
+        }
+
+        div p strong {
+            color: #2c3e50;
+        }
+
+        h3 {
+            margin-top: 25px;
+            color: #2c3e50;
+        }
+
+        /* Tabela de missões */
+        table {
+            width: 100%;
+            margin-top: 15px;
+            border-collapse: collapse;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        thead {
+            background: #2c3e50;
+            color: #fff;
+        }
+
+        thead th {
+            padding: 12px;
+            text-align: left;
+            font-size: 15px;
+        }
+
+        tbody td {
+            padding: 12px;
+            border-bottom: 1px solid #e0e6ed;
+            font-size: 14px;
+        }
+
+        tbody tr:hover {
+            background: #f8f9fc;
+        }
+
+        /* Botão de voltar */
+        a {
+            display: inline-block;
+            margin: 25px auto 0 auto;
+            padding: 10px 20px;
+            background: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        a:hover {
+            background: #2980b9;
+        }
+    </style>
+</head>
+<body>
+<h1>Detalhe do Ninja</h1>
+<div>
+    <img th:src="${ninja.imgUrl}" alt="${ninja.nome}" width="200" />
+    <h2 th:text="${ninja.nome}"></h2>
+    <p><strong>Email:</strong><span th:text="${ninja.email}"></span></p>
+    <p><strong>Idade:</strong><span th:text="${ninja.idade}"></span></p>
+    <p><strong>Rank:</strong><span th:text="${ninja.rank}"></span></p>
+
+    <h3>Missões:</h3>
+    <table>
+        <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Dificuldade</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="missao : ${ninja.missoes}">
+            <td th:text="${missao.nome}"></td>
+            <td th:text="${missao.dificuldade}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<a href="/ninjas/ui/listar">Voltar para a lista de ninjas</a>
+</body>
+</html>
